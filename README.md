@@ -1,21 +1,57 @@
 # swiftfmt
+[![Build Status](https://travis-ci.org/kishikawakatsumi/swiftfmt.svg?branch=master)](https://travis-ci.org/kishikawakatsumi/swiftfmt)
 
 A tool for formatting Swift code according to style guidelines.
 
 ### A Work In Progress
 swiftfmt is still in active development.
 
+Requirements
+---------------------------------------
+Swiftfmt requires [Swift 4.1 toolchains](https://swift.org/download/#snapshots).
 
+Installation
+---------------------------------------
+Download and install [the latest trunk Swift development toolchain](https://swift.org/download/#snapshots).
 
+```shell
+git clone https://github.com/kishikawakatsumi/swiftfmt
+```
+
+```shell
+cd swiftfmt
+```
+
+```shell
+~/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/swift package update
+```
+
+```shell
+~/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/swift build -c release
+```
+
+Copy the file (`.build/release/swiftfmt`) to your binary location.
+
+Getting Started
+---------------------------------------
+
+```shell
+swiftfmt [file or directory]
+```
+
+Usage
+---------------------------------------
 
 Configurations
 ---------------------------------------
+Download and install [the latest trunk Swift development toolchain](https://swift.org/download/#snapshots).
 
 ### Tabs and Indents
 
 **Use tab character**
 
 ```diff
+git clone https://github.com/kishikawakatsumi/swiftfmt
  class Shape {
 -    var numberOfSides = 0
 -    func simpleDescription() -> String {
@@ -29,6 +65,7 @@ Configurations
  }
 
 ```
+```shell
 
 **Indent = 2**
 
@@ -81,6 +118,7 @@ Configurations
 ### Spaces
 
 #### Before Parentheses
+---------------------------------------
 
 **Method/function declaration parentheses**
 
