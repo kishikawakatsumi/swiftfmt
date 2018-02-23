@@ -78,6 +78,86 @@ Configurations
  }
 ```
 
+### Spaces
+
+#### Before Parentheses
+
+**Method/function declaration parentheses**
+
+```diff
+ class Counter {
+     var count = 0
+-    
+-    func increment() {
++
++    func increment () {
+         count += 1
+     }
+ 
+-    func increment(by amount: Int) {
++    func increment (by amount: Int) {
+         count += amount
+     }
+ 
+-    func reset() {
++    func reset () {
+         count = 0
+     }
+ }
+```
+
+**Method/function call parentheses**
+
+```diff
+ struct Point {
+     var x = 0.0, y = 0.0
++
+     mutating func moveBy(x deltaX: Double, y deltaY: Double) {
+-        self = Point(x: x + deltaX, y: y + deltaY)
++        self = Point (x: x + deltaX, y: y + deltaY)
+     }
+ }
+```
+
+**'if' parentheses**
+
+```diff
+-if(temperatureInFahrenheit <= 32) {
++if (temperatureInFahrenheit <= 32) {
+     print("It's very cold. Consider wearing a scarf.")
+-} else if(temperatureInFahrenheit >= 86) {
++} else if (temperatureInFahrenheit >= 86) {
+     print("It's really warm. Don't forget to wear sunscreen.")
+ }
+```
+
+**'while' parentheses**
+
+**'switch' parentheses**
+
+**'catch' parentheses**
+
+**Attribute parentheses**
+
+#### Around Operators
+
+#### Before Left Brace
+
+#### Before Keywords
+
+#### Within
+
+#### In Ternary Operator (:?)
+
+#### Around colons
+
+#### Within Type Arguments
+
+#### Other
+
+### Wrapping and Braces
+
+### Blank Lines
 
 Author
 ---------------------------------------
