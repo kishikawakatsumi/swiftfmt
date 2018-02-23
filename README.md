@@ -360,11 +360,34 @@ Configurations
 
 **Brackets**
 
+`"brackets" : true`
+
 **Array and dictionary literal brackets**
+
+`"arrayAndDictionaryLiteralBrackets" : true`
+
+```diff
+-var shoppingList = ["Eggs", "Milk"]
+-shoppingList += ["Baking Powder"]
+-shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
++var shoppingList = [ "Eggs", "Milk" ]
++shoppingList += [ "Baking Powder" ]
++shoppingList += [ "Chocolate Spread", "Cheese", "Butter" ]
+```
 
 **Grouping parenthesese**
 
 **Method/function declaration parenthesese**
+
+`"functionDeclarationParentheses" : true`
+
+```diff
+-func greet(person: String) -> String {
++func greet( person: String ) -> String {
+     let greeting = "Hello, " + person + "!"
+     return greeting
+ }
+```
 
 **Empty method/function declaration parenthesese**
 
