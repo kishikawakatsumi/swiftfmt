@@ -230,11 +230,41 @@ Configurations
 
 **Closure Arrow (->)**
 
+```diff
+-func greet(person: String)->String {
++func greet(person: String) -> String {
+     let greeting = "Hello, " + person + "!"
+     return greeting
+ }
+```
+
 #### Before Left Brace
 
 **Type declaration left brace**
 
+```diff
+-struct Resolution{
++struct Resolution {
+     var width = 0
+     var height = 0
+ }
+-class VideoMode{
++
++class VideoMode {
+     var resolution = Resolution()
+     var interlaced = false
+     var frameRate = 0.0
+```
+
 **Method/function left brace**
+
+```diff
+-func greet(person: String) -> String{
++func greet(person: String) -> String {
+     let greeting = "Hello, " + person + "!"
+     return greeting
+ }
+```
 
 **'if' left brace**
 
