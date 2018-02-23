@@ -907,4 +907,34 @@ class SpaceTests : XCTestCase {
         let result = runner.run(source: source, configuration: configuration)
         XCTAssertEqual(result, expected)
     }
+
+    func testSpacesAroundAssignmentOperators() {
+        let source = """
+            let contentHeight=40
+            let hasHeader=true
+            let rowHeight: Int
+            if hasHeader {
+                rowHeight=contentHeight+50
+            } else {
+                rowHeight=contentHeight+20
+            }
+            """
+
+        let expected = """
+            let contentHeight = 40
+            let hasHeader = true
+            let rowHeight: Int
+            if hasHeader {
+                rowHeight = contentHeight + 50
+            } else {
+                rowHeight = contentHeight + 20
+            }
+
+            """
+        let runner = TestRunner()
+        let configuration = Configuration()
+
+        let result = runner.run(source: source, configuration: configuration)
+        XCTAssertEqual(result, expected)
+    }
 }
