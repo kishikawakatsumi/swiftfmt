@@ -47,7 +47,7 @@ struct SpaceFormatter : TokenFormatter {
                     }
                 case .leftParen:
                     if isEmptyFunctionParenthese(tokens, index + 1, false) {
-                        formatted.append(token)
+                        formatted.append(.code(Code(text: format(code, configuration.spaces.before.parentheses), token: code.token, contexts: code.contexts)))
                     } else {
                         let c = Code(text: format(code, configuration.spaces.within), token: code.token, contexts: code.contexts)
                         if isPlacedAtFirstOfLine(tokens, index - 1) || hasLeadingWhitespace(tokens, index - 1) {
