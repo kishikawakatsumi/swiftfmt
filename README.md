@@ -30,7 +30,9 @@ Configurations
 
 ```
 
-**Indent = 2**
+**Indent**
+
+`"indent" : 2`
 
 ```diff
  class Shape {
@@ -268,15 +270,60 @@ Configurations
 
 **'if' left brace**
 
+```diff
+ var temperatureInFahrenheit = 30
+-if temperatureInFahrenheit <= 32{
++if temperatureInFahrenheit <= 32 {
+     print("It's very cold. Consider wearing a scarf.")
+ }
+```
+
 **'else' left brace**
+
+```diff
+ temperatureInFahrenheit = 40
+ if temperatureInFahrenheit <= 32 {
+     print("It's very cold. Consider wearing a scarf.")
+-} else{
++} else {
+     print("It's not that cold. Wear a t-shirt.")
+ }
+```
 
 **'for' left brace**
 
+```diff
+ let names = ["Anna", "Alex", "Brian", "Jack"]
+-for name in names{
++for name in names {
+     print("Hello, \(name)!")
+ }
+```
+
 **'while' left brace**
+
+```diff
+ var square = 0
+ var diceRoll = 0
+-while square < finalSquare{
++while square < finalSquare {
+     // roll the dice
+     diceRoll += 1
+     if diceRoll == 7 { diceRoll = 1 }
+```
 
 **'do' left brace**
 
 **'switch' left brace**
+
+```diff
+ let someCharacter: Character = "z"
+-switch someCharacter{
++switch someCharacter {
+ case "a":
+     print("The first letter of the alphabet")
+ case "z":
+```
 
 **'catch' left brace**
 
@@ -284,23 +331,188 @@ Configurations
 
 **'else' keyword**
 
+```diff
+ temperatureInFahrenheit = 40
+ if temperatureInFahrenheit <= 32 {
+     print("It's very cold. Consider wearing a scarf.")
+-}else {
++} else {
+     print("It's not that cold. Wear a t-shirt.")
+ }
+```
+
 **'while' keyword**
+
+```diff
+     if diceRoll == 7 { diceRoll = 1 }
+     // move by the rolled amount
+     square += diceRoll
+-}while square < finalSquare
++} while square < finalSquare
+ print("Game over!")
+```
 
 **'catch' keyword**
 
 #### Within
 
+**Code braces**
+
+**Brackets**
+
+**Array and dictionary literal brackets**
+
+**Grouping parenthesese**
+
+**Method/function declaration parenthesese**
+
+**Empty method/function declaration parenthesese**
+
+**Method/function call parenthesese**
+
+**Empty method/function call parenthesese**
+
+**'if' parenthesese**
+
+**'while' parenthesese**
+
+**'switch' parenthesese**
+
+**'catch' parenthesese**
+
+**Attribute parenthesese**
+
 #### In Ternary Operator (:?)
+
+**After '?'**
+
+**Before ':'**
+
+**After ':'**
 
 #### Around colons
 
+**Before colon in type annotations**
+
+**After colon in type annotations**
+
+**Before colon in type inheritance clauses**
+
+**After colon in type inheritance clauses**
+
+**Before colon in dictionary types**
+
+**After colon in dictionary types**
+
+**Before colon in dictionary literal 'key:value' pair**
+
+**After colon in dictionary literal 'key:value' pair**
+
 #### Within Type Arguments
 
+**After comma**
+
 #### Other
+
+**Before comma**
+
+**After comma**
+
+**Before semicolon**
+
+**After semicolon**
 
 ### Wrapping and Braces
 
 ### Blank Lines
+
+#### Keep Maximum Blank Lines
+
+**In declarations**
+
+**In code**
+
+**Before '}'**
+
+#### Minimum Blank Lines
+
+**Before imports**
+
+`"beforeImports" : 1`
+
+```diff
+ //
+ //  Created by Kishikawa Katsumi on 2018/02/14.
+ //
++
+ import Foundation
+ import Basic
+ import SwiftSyntax
+```
+
+**After imports**
+
+`"afterImports" : 1`
+
+```diff
+ import Foundation
+ import Basic
+ import SwiftSyntax
++
+ public struct Processor {
+     private let options: [String]
+```
+
+**Around type declarations**
+
+`"aroundTypeDeclarations" : 1`
+
+```diff
+@@ -9,6 +9,7 @@ fileprivate class Bracket : Indentation {
+         self.lineNumber = lineNumber
+     }
+ }
++
+ fileprivate class SwitchStatement {
+     var lineNumber: Int
+ 
+@@ -16,6 +17,7 @@ fileprivate class SwitchStatement {
+         self.lineNumber = lineNumber
+     }
+ }
++
+ fileprivate class CaseBranch {
+     var lineNumber: Int
+ 
+@@ -23,6 +25,7 @@ fileprivate class CaseBranch {
+         self.lineNumber = lineNumber
+     }
+ }
++
+ protocol Indentation {
+     var indent: Bool { get set }
+     var alignment: Int { get set }
+```
+
+**Around property in protocol**
+
+`"aroundPropertyInProtocol" : 0`
+
+**Around property**
+
+`"aroundProperty" : 1`
+
+**Around method/function in protocol**
+
+`"aroundFunctionInProtocol" : 0`
+
+**Around method/function**
+
+`"aroundFunction" : 1`
+
+**Before method/function body**
+
+`"beforeFunctionBody" : 0`
 
 Author
 ---------------------------------------
