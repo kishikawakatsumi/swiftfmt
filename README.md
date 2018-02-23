@@ -133,7 +133,26 @@ Configurations
 
 **'while' parentheses**
 
+```diff
+ var square = 0
+ var diceRoll = 0
+-while(square < finalSquare) {
++while (square < finalSquare) {
+     // roll the dice
+     diceRoll += 1
+     if diceRoll == 7 { diceRoll = 1 }
+```
+
 **'switch' parentheses**
+
+```diff
+ let someCharacter: Character = "z"
+-switch(someCharacter) {
++switch (someCharacter) {
+ case "a":
+     print("The first letter of the alphabet")
+ case "z":
+```
 
 **'catch' parentheses**
 
