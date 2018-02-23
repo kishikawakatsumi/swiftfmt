@@ -120,6 +120,36 @@ class SpaceTests : XCTestCase {
         XCTAssertEqual(result, expected)
     }
 
+    func testParenthesesBeforeFunctionDeclaration() {
+        let source = """
+            class Shape {
+                var numberOfSides = 0
+
+                func simpleDescription() -> String {
+                    return "A shape with \\(numberOfSides) sides."
+                }
+            }
+            """
+
+        let expected = """
+            class Shape {
+                var numberOfSides = 0
+
+                func simpleDescription () -> String {
+                    return "A shape with \\(numberOfSides) sides."
+                }
+            }
+
+            """
+
+        let runner = TestRunner()
+        var configuration = Configuration()
+        configuration.spaces.before.parentheses.functionDeclaration = true
+
+        let result = runner.run(source: source, configuration: configuration)
+        XCTAssertEqual(result, expected)
+    }
+
     func testParenthesesAfterFunctionCall1() {
         let source = """
             public class Foo{
@@ -146,6 +176,7 @@ class SpaceTests : XCTestCase {
         let result = runner.run(source: source, configuration: configuration)
         XCTAssertEqual(result, expected)
     }
+    
 
     func testParenthesesAfterFunctionCall2() {
         let source = """
