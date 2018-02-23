@@ -354,7 +354,7 @@ fileprivate class CaseBranch {
     }
 }
 
-protocol Indentation {
+fileprivate protocol Indentation {
     var indent: Bool { get set }
     var alignment: Int { get set }
     var lineNumber: Int { get set }
