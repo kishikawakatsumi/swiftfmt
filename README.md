@@ -42,9 +42,9 @@ swiftfmt [file or directory]
 Usage
 ---------------------------------------
 
+
 Configurations
 ---------------------------------------
-Download and install [the latest trunk Swift development toolchain](https://swift.org/download/#snapshots).
 
 ### Tabs and Indents
 
@@ -63,8 +63,6 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 +               return "A shape with \(numberOfSides) sides."
 +       }
  }
-
-```
 ```shell
 
 **Indent**
@@ -83,7 +81,6 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 +    return "A shape with \(numberOfSides) sides."
 +  }
  }
-
 ```
 
 **Keep indents on empty lines**
@@ -120,7 +117,6 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 ### Spaces
 
 #### Before Parentheses
----------------------------------------
 
 **Method/function declaration parentheses**
 
