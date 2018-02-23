@@ -453,9 +453,38 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 
 **After colon in type annotations**
 
+```diff
+-func greet(person:String, alreadyGreeted:Bool) -> String {
++func greet(person: String, alreadyGreeted: Bool) -> String {
+     if alreadyGreeted {
+-        return greetAgain(person:person)
++        return greetAgain(person: person)
+     } else {
+-        return greet(person:person)
++        return greet(person: person)
+     }
+ }
+```
+
 **Before colon in type inheritance clauses**
 
+```diff
+-class Movie: MediaItem {
++class Movie : MediaItem {
+     var director: String
+     init(name: String, director: String) {
+         self.director = director
+```
+
 **After colon in type inheritance clauses**
+
+```
+-class Movie :MediaItem {
++class Movie : MediaItem {
+     var director: String
+     init(name: String, director: String) {
+         self.director = director
+```
 
 **Before colon in dictionary types**
 
