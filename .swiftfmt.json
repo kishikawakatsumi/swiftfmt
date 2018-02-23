@@ -1,0 +1,172 @@
+{
+  "indentation" : {
+    "useTabCharacter" : false,
+    "tabSize" : 4,
+    "indent" : 4,
+    "continuationIndent" : 8,
+    "keepIndentsOnEmptyLines" : false,
+    "indentCaseBranches" : false
+  },
+  "shouldRemoveSemicons" : true,
+  "spaces" : {
+    "before" : {
+      "parentheses" : {
+        "functionDeclaration" : false,
+        "functionCall" : false,
+        "if" : true,
+        "while" : true,
+        "switch" : true,
+        "catch" : true,
+        "attribute" : false,
+      },
+      "leftBrace" : {
+        "typeDeclaration" : true,
+        "function" : true,
+        "if" : true,
+        "else" : true,
+        "for" : true,
+        "while" : true,
+        "do" : true,
+        "switch" : true,
+        "catch" : true
+      },
+      "keywords" : {
+        "else" : true,
+        "while" : true,
+        "catch" : true
+      }
+    },
+    "around" : {
+      "operators" : {
+        "assignmentOperators" : true,
+        "logicalOperators" : true,
+        "equalityOperators" : true,
+        "relationalOperators" : true,
+        "bitwiseOperators" : true,
+        "additiveOperators" : true,
+        "multiplicativeOperators" : true,
+        "shiftOperators" : true,
+        "rangeOperators" : false,
+        "closureArrow" : true
+      },
+      "colons" : {
+        "beforeTypeAnnotations" : false,
+        "afterTypeAnnotations" : true,
+        "beforeTypeInheritanceClauses" : true,
+        "afterTypeInheritanceClauses" : true,
+        "beforeDictionaryTypes" : false,
+        "afterDictionaryTypes" : true,
+        "beforeDictionaryLiteralKeyValuePair" : false,
+        "afterDictionaryLiteralKeyValuePair" : true,
+        "beforeAttributeArguments" : false,
+        "afterAttributeArguments" : true
+      }
+    },
+    "within" : {
+      "codeBraces" : true,
+      "brackets" : false,
+      "arrayAndDictionaryLiteralBrackets" : false,
+      "groupingParentheses" : false,
+      "functionDeclarationParentheses" : false,
+      "emptyFunctionCallParentheses" : false,
+      "functionCallParentheses" : false,
+      "emptyFunctionDeclarationParentheses" : false,
+      "ifParentheses" : false,
+      "whileParentheses" : false,
+      "switchParentheses" : false,
+      "catchParentheses" : false,
+      "attributeParentheses" : false
+    },
+    "inTernaryOperator" : {
+      "afterQuestionMark" : true,
+      "afterColon" : true,
+      "beforeColon" : true
+    },
+    "comma" : {
+      "before" : false,
+      "after" : true,
+      "afterWithinTypeArguments" : true
+    },
+    "semicolon" : {
+      "before" : false,
+      "after" : true
+    }
+  },
+  "braces" : {
+    "placement" : {
+      "inTypeDeclarations" : 0,
+      "inFunctions" : 0,
+      "inOther" : 0
+    }
+  },
+  "wrapping" : {
+    "keepWhenReformatting" : {
+      "lineBreakes" : true,
+      "commentAtFirstColumn" : true,
+      "simpleBlocksAndTrailingClosuresInOneLine" : true,
+      "simpleClosureArgumentsInOneLine" : true,
+      "simpleFunctionsInOneLine" : true
+    },
+    "ifStatement" : {
+      "elseOnNewLine" : false
+    },
+    "ifStatement" : {
+      "elseOnNewLine" : false
+    },
+    "guardStatement" : {
+      "elseOnNewLine" : false
+    },
+    "repeatWhileStatement" : {
+      "whileOnNewLine" : false
+    },
+    "doStatement" : {
+      "catchOnNewLine" : false
+    },
+    "modifierList" : {
+      "wrapAfterModifierList" : false
+    },
+    "alignment" : {
+      "baseClassAndAdoptedProtocolList" : {
+        "wrapping" : 0,
+        "alignWhenMultiline" : false
+      },
+      "functionDeclarationParameters" : {
+        "placeRightParenthesisOnNewLine" : false,
+        "wrapping" : 0,
+        "alignWhenMultiline" : true,
+        "newLineAfterLeftParenthesis" : false
+      },
+      "functionCallArguments" : {
+        "placeRightParenthesisOnNewLine" : false,
+        "wrapping" : 0,
+        "alignWhenMultiline" : true,
+        "newLineAfterLeftParenthesis" : false
+      },
+      "chainedMethodCalls" : {
+        "wrapping" : 0,
+        "alignWhenMultiline" : false
+      },
+      "closures" : {
+        "parametersOnNewLineWhenMultiline" : false
+      }
+    }
+  },
+  "blankLines" : {
+    "keepMaximumBlankLines" : {
+      "inDeclarations" : 2,
+      "inCode" : 2,
+      "beforeClosingBrace" : 2
+    },
+    "minimumBlankLines" : {
+      "beforeImports" : 1,
+      "afterImports" : 1,
+      "aroundTypeDeclarations" : 1,
+      "aroundPropertyInProtocol" : 0,
+      "aroundProperty" : 0,
+      "aroundFunctionInProtocol" : 0,
+      "aroundFunction" : 1,
+      "beforeFunctionBody" : 0
+    }
+  },
+  "hardWrapAt" : 120
+}
