@@ -162,11 +162,54 @@ Configurations
 
 **Assignment Operators (=, +=, ...)**
 
+```diff
+-let contentHeight=40
+-let hasHeader=true
++let contentHeight = 40
++let hasHeader = true
+ let rowHeight: Int
+ if hasHeader {
+-    rowHeight=contentHeight+50
++    rowHeight = contentHeight + 50
+ } else {
+-    rowHeight=contentHeight+20
++    rowHeight = contentHeight + 20
+ }
+```
+
 **Logical Operators (&&, ||)**
+
+```diff
+-if enteredDoorCode&&passedRetinaScan||hasDoorKey||knowsOverridePassword {
++if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
+     print("Welcome!")
+ } else {
+     print("ACCESS DENIED")
+```
 
 **Equality Operator (==)**
 
+```diff
+ let name = "world"
+-if name=="world" {
++if name == "world" {
+     print("hello, world")
+ } else {
+     print("I'm sorry \(name), but I don't recognize you")
+```
+
 **Relational Operators (<, >, <=, >=)**
+
+```diff
+-2>1    // true because 2 is greater than 1
+-1<2    // true because 1 is less than 2
+-1>=1   // true because 1 is greater than or equal to 1
+-2<=1   // false because 2 is not less than or equal to 1
++2 > 1 // true because 2 is greater than 1
++1 < 2 // true because 1 is less than 2
++1 >= 1 // true because 1 is greater than or equal to 1
++2 <= 1 // false because 2 is not less than or equal to 1
+```
 
 **Bitwise Operators (&, |, ^)**
 
@@ -177,6 +220,13 @@ Configurations
 **Shift Operators (<<, >>)**
 
 **Range Operators (..., ..<)**
+
+```diff
+-for index in 1 ... 5 {
++for index in 1...5 {
+     print("\(index) times 5 is \(index * 5)")
+ }
+```
 
 **Closure Arrow (->)**
 
