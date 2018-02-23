@@ -160,9 +160,53 @@ Configurations
 
 #### Around Operators
 
+**Assignment Operators (=, +=, ...)**
+
+**Logical Operators (&&, ||)**
+
+**Equality Operator (==)**
+
+**Relational Operators (<, >, <=, >=)**
+
+**Bitwise Operators (&, |, ^)**
+
+**Additive Operators (+, -)**
+
+**Multiplicative Operators (*, /, %)**
+
+**Shift Operators (<<, >>)**
+
+**Range Operators (..., ..<)**
+
+**Closure Arrow (->)**
+
 #### Before Left Brace
 
+**Type declaration left brace**
+
+**Method/function left brace**
+
+**'if' left brace**
+
+**'else' left brace**
+
+**'for' left brace**
+
+**'while' left brace**
+
+**'do' left brace**
+
+**'switch' left brace**
+
+**'catch' left brace**
+
 #### Before Keywords
+
+**'else' keyword**
+
+**'while' keyword**
+
+**'catch' keyword**
 
 #### Within
 
