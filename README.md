@@ -1,0 +1,2 @@
+# swiftfmt
+Format Rust code
