@@ -770,7 +770,57 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 
 **Before comma**
 
+```diff
+ enum State {
+-    case none, all
++    case none , all
+ }
+ 
+-typealias Status = (Int, String)
++typealias Status = (Int , String)
+ 
+-func +++(l: String, r: String) -> String {
++func +++(l: String , r: String) -> String {
+     return ""
+ }
+ 
+-let array = ["One", "Two", "Three", "Four", "Five"]
++let array = ["One" , "Two" , "Three" , "Four" , "Five"]
+ 
+-let dictionary = ["One": 1, "Two": 2, "Three": 3, "Four": 4, "Five": 5]
++let dictionary = ["One": 1 , "Two": 2 , "Three": 3 , "Four": 4 , "Five": 5]
+```
+
 **After comma**
+
+```diff
+ enum State {
+-    case none,all
++    case none, all
+ }
+ 
+-typealias Status = (Int,String)
++typealias Status = (Int, String)
+ 
+ struct S {
+ }
+@@ -15,16 +15,16 @@ struct S {
+ protocol P {
+ }
+ 
+-func +++(l: String,r: String) -> String {
++func +++(l: String, r: String) -> String {
+     return ""
+ }
+ 
+-let array = ["One","Two","Three","Four","Five"]
++let array = ["One", "Two", "Three", "Four", "Five"]
+ var emptyArray = []
+ 
+-let dictionary = ["One": 1,"Two": 2,"Three": 3,"Four": 4,"Five": 5]
++let dictionary = ["One": 1, "Two": 2, "Three": 3, "Four": 4, "Five": 5]
+ var emptyDictionary: [String: Int] = [:]
+```
 
 **Before semicolon**
 
