@@ -459,6 +459,18 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 
 **'catch' keyword**
 
+```diff
+ do {
+     try throwable()
+-}catch Error.unexpected(let cause) {
++} catch Error.unexpected(let cause) {
+     print("unexpected error!")
+-}catch (Error.unknown) {
++} catch (Error.unknown) {
+     print("unknown error!")
+ }
+```
+
 #### Within
 
 **Code braces**
@@ -466,6 +478,17 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 **Brackets**
 
 `"brackets" : true`
+
+```diff
+     len = 10
+ }
+ repeat {
+-    text[ext++] = "$"
++    text[ ext++ ] = "$"
+ } while (ext < len)
+ 
+ len = len > 10000 ? len : 0
+```
 
 **Array and dictionary literal brackets**
 
@@ -482,6 +505,17 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 
 **Grouping parenthesese**
 
+```diff
+ var ext = x
+ var len = y
+ for i in 0..<x {
+-    y += (y ^ 0x123) << 2
++    y += ( y ^ 0x123 ) << 2
+ }
+ repeat {
+     text[ext++] = "$"
+```
+
 **Method/function declaration parenthesese**
 
 `"functionDeclarationParentheses" : true`
@@ -496,19 +530,108 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 
 **Empty method/function declaration parenthesese**
 
+```diff
+-func sayHelloWorld() -> String {
++func sayHelloWorld( ) -> String {
+     return "hello, world"
+ }
+ print(sayHelloWorld())
+```
+
 **Method/function call parenthesese**
+
+```diff
+ func greet(person: String, alreadyGreeted: Bool) -> String {
+     if alreadyGreeted {
+-        return greetAgain(person: person)
++        return greetAgain( person: person )
+     } else {
+-        return greet(person: person)
++        return greet( person: person )
+     }
+ }
+```
 
 **Empty method/function call parenthesese**
 
+```diff
+ func sayHelloWorld() -> String {
+     return "hello, world"
+ }
+-print(sayHelloWorld())
++print(sayHelloWorld( ))
+```
+
 **'if' parenthesese**
+
+```diff
+ while square < finalSquare {
+     // roll the dice
+     diceRoll += 1
+-    if (diceRoll == 7) { diceRoll = 1 }
++    if ( diceRoll == 7 ) { diceRoll = 1 }
+     // move by the rolled amount
+     square += diceRoll
+-    if (square < board.count) {
++    if ( square < board.count ) {
+         // if we're still on the board, move up or down for a snake or a ladder
+         square += board[square]
+     }
+```
 
 **'while' parenthesese**
 
+```diff
+ var square = 0
+ var diceRoll = 0
+-while (square < finalSquare) {
++while ( square < finalSquare ) {
+     repeat {
+         // move up or down for a snake or ladder
+         square += board[square]
+@@ -9,5 +9,5 @@ while (square < finalSquare) {
+         if diceRoll == 7 { diceRoll = 1 }
+         // move by the rolled amount
+         square += diceRoll
+-    } while (square < finalSquare)
++    } while ( square < finalSquare )
+ }
+```
+
 **'switch' parenthesese**
+
+```diff
+ let someCharacter: Character = "z"
+-switch (someCharacter) {
++switch ( someCharacter ) {
+ case "a":
+     print("The first letter of the alphabet")
+ case "z":
+```
 
 **'catch' parenthesese**
 
+```diff
+     try throwable()
+ } catch Error.unexpected(let cause) {
+     print("unexpected error!")
+-} catch (Error.unknown) {
++} catch ( Error.unknown ) {
+     print("unknown error!")
+ }
+```
+
 **Attribute parenthesese**
+
+```diff
+-@available(swift 3.0.2)
+-@available(macOS 10.12, *)
++@available( swift 3.0.2 )
++@available( macOS 10.12, * )
+ struct MyStruct {
+     // struct definition
+ }
+```
 
 #### In Ternary Operator (:?)
 
