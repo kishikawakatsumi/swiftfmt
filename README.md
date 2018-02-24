@@ -8,7 +8,7 @@ swiftfmt is still in active development.
 
 Requirements
 ---------------------------------------
-Swiftfmt requires [Swift 4.1 toolchains](https://swift.org/download/#snapshots).
+Swiftfmt requires [Swift trunk toolchains](https://swift.org/download/#snapshots).
 
 Installation
 ---------------------------------------
@@ -63,7 +63,7 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 +               return "A shape with \(numberOfSides) sides."
 +       }
  }
-```shell
+```
 
 **Indent**
 
@@ -192,7 +192,28 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 
 **'catch' parentheses**
 
+```diff
+ do {
+     try throwable()
+ } catch Error.unexpected(let cause) {
+     print("unexpected error!")
+-} catch(Error.unknown) {
++} catch (Error.unknown) {
+     print("unknown error!")
+ }
+```
+
 **Attribute parentheses**
+
+```diff
+-@available (swift 3.0.2)
+-@available (macOS 10.12, *)
++@available(swift 3.0.2)
++@available(macOS 10.12, *)
+ struct MyStruct {
+     // struct definition
+ }
+```
 
 #### Around Operators
 
@@ -249,11 +270,41 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 
 **Bitwise Operators (&, |, ^)**
 
+```diff
+ for i in 0..<x {
+-    y += (y^0x123) << 2
++    y += (y ^ 0x123) << 2
+ }
+```
+
 **Additive Operators (+, -)**
+
+```diff
+ while (x != y) {
+-    x = f(x * 3+5)
++    x = f(x * 3 + 5)
+ }
+```
 
 **Multiplicative Operators (*, /, %)**
 
+```diff
+ while (x != y) {
+-    x = f(x*3 + 5)
++    x = f(x * 3 + 5)
+ }
+```
+
 **Shift Operators (<<, >>)**
+
+```diff
+ for i in 0..<x {
+-    y += (y ^ 0x123)<<2
++    y += (y ^ 0x123) << 2
+ }
+ if (0 < x && x <= 10) {
+     while (x != y) {
+```
 
 **Range Operators (..., ..<)**
 
@@ -348,6 +399,14 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 
 **'do' left brace**
 
+```diff
+-do{
++do {
+     try throwable()
+ } catch Error.unexpected(let cause) {
+     print("unexpected error!")
+```
+
 **'switch' left brace**
 
 ```diff
@@ -360,6 +419,18 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 ```
 
 **'catch' left brace**
+
+```diff
+ do {
+     try throwable()
+-} catch Error.unexpected(let cause){
++} catch Error.unexpected(let cause) {
+     print("unexpected error!")
+-} catch (Error.unknown){
++} catch (Error.unknown) {
+     print("unknown error!")
+ }
+```
 
 #### Before Keywords
 
