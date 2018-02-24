@@ -42,6 +42,9 @@ swiftfmt [file or directory]
 Usage
 ---------------------------------------
 
+```shell
+swiftfmt .
+```
 
 Configurations
 ---------------------------------------
@@ -637,13 +640,47 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 
 **After '?'**
 
+```diff
+ let contentHeight = 40
+ let hasHeader = true
+-let rowHeight = contentHeight + (hasHeader ?50:20)
++let rowHeight = contentHeight + (hasHeader ? 50:20)
+```
+
 **Before ':'**
 
+```diff
+ let contentHeight = 40
+ let hasHeader = true
+-let rowHeight = contentHeight + (hasHeader ?50:20)
++let rowHeight = contentHeight + (hasHeader ?50: 20)
+```
+
 **After ':'**
+
+```diff
+ let contentHeight = 40
+ let hasHeader = true
+-let rowHeight = contentHeight + (hasHeader ?50:20)
++let rowHeight = contentHeight + (hasHeader ?50: 20)
+```
 
 #### Around colons
 
 **Before colon in type annotations**
+
+```diff
+-func greet(person: String, alreadyGreeted: Bool) -> String {
++func greet(person : String, alreadyGreeted : Bool) -> String {
+     if alreadyGreeted {
+-        return greetAgain(person: person)
++        return greetAgain(person : person)
+     } else {
+-        return greet(person: person)
++        return greet(person : person)
+     }
+ }
+```
 
 **After colon in type annotations**
 
@@ -682,15 +719,52 @@ git clone https://github.com/kishikawakatsumi/swiftfmt
 
 **Before colon in dictionary types**
 
+```diff
+-var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+-var emptyDictionary: [String: Int] = [:]
++var airports: [String : String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
++var emptyDictionary: [String : Int] = [:]
+```
+
 **After colon in dictionary types**
+
+```diff
+-var airports: [String:String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+-var emptyDictionary: [String:Int] = [:]
++var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
++var emptyDictionary: [String: Int] = [:]
+```
 
 **Before colon in dictionary literal 'key:value' pair**
 
+```diff
+-var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
++var airports: [String: String] = ["YYZ" : "Toronto Pearson", "DUB" : "Dublin"]
+ var emptyDictionary: [String: Int] = [:]
+```
+
 **After colon in dictionary literal 'key:value' pair**
+
+```diff
+-var airports: [String: String] = ["YYZ":"Toronto Pearson", "DUB":"Dublin"]
++var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+ var emptyDictionary: [String: Int] = [:]
+```
 
 #### Within Type Arguments
 
 **After comma**
+
+```diff
+-func allItemsMatch<C1: Container,C2: Container>
++func allItemsMatch<C1: Container, C2: Container>
+ (_ someContainer: C1,_ anotherContainer: C2) -> Bool
+-where C1.Item == C2.Item,C1.Item:Equatable {
++where C1.Item == C2.Item, C1.Item: Equatable {
+     // Check that both containers contain the same number of items.
+     if someContainer.count != anotherContainer.count {
+         return false
+```
 
 #### Other
 
