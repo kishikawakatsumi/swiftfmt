@@ -17,8 +17,7 @@ public struct Processor {
     }
 
     public func processFile(input fileURL: URL, configuration: Configuration, verbose: Bool = false) throws -> String {
-        print(fileURL.path)
-        let tokens = try! tokenize(fileURL: fileURL, configuration: configuration)
+        let tokens = try tokenize(fileURL: fileURL, configuration: configuration)
 
         let formatter = SourceFormatter(tokenFormatters: [SemicolonFormatter(), SpaceFormatter(), BraceFormatter(), WrappingFormatter()],
                                         lineFormatters: [BlankLineFormatter(), IndentFormatter(), AlignmentFormatter()])

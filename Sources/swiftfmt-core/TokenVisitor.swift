@@ -82,6 +82,10 @@ class TokenVisitor : SyntaxVisitor {
         processNode(node)
     }
 
+    override func visit(_ node: GenericWhereClauseSyntax) {
+        processNode(node)
+    }
+
     override func visit(_ node: ClosureExprSyntax) {
         processNode(node)
     }

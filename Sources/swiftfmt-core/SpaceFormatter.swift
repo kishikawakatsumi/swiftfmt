@@ -57,9 +57,10 @@ struct SpaceFormatter : TokenFormatter {
                         }
                     }
                 case .rightParen:
-                    if isEmptyFunctionParenthese(tokens, index - 1, true) {
+                    let isEmptyFunction = isEmptyFunctionParenthese(tokens, index - 1, true)
+                    if isEmptyFunction {
                         if configuration.spaces.within.emptyFunctionDeclarationParentheses || configuration.spaces.within.emptyFunctionCallParentheses {
-                            formatted.append(.code(Code(text: format(code, configuration.spaces.within), token: code.token, contexts: code.contexts)))
+                            formatted.append(.code(Code(text: format(code, configuration.spaces.within, isEmpty: isEmptyFunction), token: code.token, contexts: code.contexts)))
                         } else {
                             formatted.append(token)
                         }
@@ -184,6 +185,21 @@ struct SpaceFormatter : TokenFormatter {
                     results.append(token)
                     whitespaces.removeAll()
                     skipWhitespaces = true
+                case .rightParen:
+                    results.append(token)
+                    whitespaces.removeAll()
+                    skipWhitespaces = false
+                case .leftSquareBracket:
+                    if !skipWhitespaces && !whitespaces.isEmpty {
+                        results.append(.whitespace(Whitespace(character: " ", count: 1, triviaPiece: TriviaPiece.spaces(1))))
+                    }
+                    results.append(token)
+                    whitespaces.removeAll()
+                    skipWhitespaces = true
+                case .rightSquareBracket:
+                    results.append(token)
+                    whitespaces.removeAll()
+                    skipWhitespaces = false
                 case .unspacedBinaryOperator, .spacedBinaryOperator:
                     if ["=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "&&", "||", "==", "===", "<", ">", "<=", ">=", "&", "|", "^", "+", "-", "*", "/", "%", "<<", ">>", "..<", "...", "->"].contains(code.text) {
                         results.append(token)
@@ -474,6 +490,13 @@ struct SpaceFormatter : TokenFormatter {
             if configuration.afterTypeInheritanceClauses {
                 suffix = " "
             }
+        case is GenericParameterSyntax, is GenericWhereClauseSyntax:
+            if configuration.beforeTypeInheritanceClausesInTypeArguments {
+                prefix = " "
+            }
+            if configuration.afterTypeInheritanceClausesInTypeArguments {
+                suffix = " "
+            }
         case is DictionaryTypeSyntax:
             if configuration.beforeDictionaryTypes {
                 prefix = " "
@@ -503,7 +526,7 @@ struct SpaceFormatter : TokenFormatter {
             if configuration.afterDictionaryLiteralKeyValuePair {
                 suffix = " "
             }
-        case is TypeAnnotationSyntax, is FunctionParameterSyntax, is FunctionCallArgumentSyntax, is GenericParameterSyntax:
+        case is TypeAnnotationSyntax, is FunctionParameterSyntax, is FunctionCallArgumentSyntax:
             if configuration.beforeTypeAnnotations {
                 prefix = " "
             }
@@ -530,7 +553,7 @@ struct SpaceFormatter : TokenFormatter {
         return prefix + text + suffix
     }
 
-    private func format(_ code: Code, _ configuration: Configuration.Spaces.Within) -> String {
+    private func format(_ code: Code, _ configuration: Configuration.Spaces.Within, isEmpty: Bool = false) -> String {
         let text = code.text
         var prefix = ""
         var suffix = ""
@@ -584,7 +607,7 @@ struct SpaceFormatter : TokenFormatter {
                 if configuration.attributeParentheses {
                     suffix = " "
                 }
-            case is ExpressionStmtSyntax:
+            case is ExpressionStmtSyntax, is CodeBlockItemSyntax:
                 if configuration.groupingParentheses {
                     suffix = " "
                 }
@@ -604,11 +627,15 @@ struct SpaceFormatter : TokenFormatter {
         } else if case .rightParen = code.token.tokenKind {
             switch context.node {
             case is FunctionDeclSyntax:
-                if configuration.functionDeclarationParentheses {
+                if isEmpty && configuration.emptyFunctionDeclarationParentheses {
+                    prefix = " "
+                } else if configuration.functionDeclarationParentheses {
                     prefix = " "
                 }
             case is FunctionCallExprSyntax:
-                if configuration.functionCallParentheses {
+                if isEmpty && configuration.emptyFunctionCallParentheses {
+                    prefix = " "
+                } else if configuration.functionCallParentheses  {
                     prefix = " "
                 }
             case is IfStmtSyntax:
@@ -631,7 +658,7 @@ struct SpaceFormatter : TokenFormatter {
                 if configuration.attributeParentheses {
                     prefix = " "
                 }
-            case is ExpressionStmtSyntax:
+            case is ExpressionStmtSyntax, is CodeBlockItemSyntax:
                 if configuration.groupingParentheses {
                     prefix = " "
                 }
@@ -694,7 +721,7 @@ struct SpaceFormatter : TokenFormatter {
         }
 
         switch context.node {
-        case is GenericParameterSyntax:
+        case is GenericParameterSyntax, is GenericWhereClauseSyntax:
             if configuration.afterWithinTypeArguments {
                 return text + " "
             } else {

@@ -101,6 +101,8 @@ public struct Configuration : Codable {
                 var afterTypeAnnotations = true
                 var beforeTypeInheritanceClauses = true
                 var afterTypeInheritanceClauses = true
+                var beforeTypeInheritanceClausesInTypeArguments = false
+                var afterTypeInheritanceClausesInTypeArguments = true
                 var beforeDictionaryTypes = false
                 var afterDictionaryTypes = true
                 var beforeDictionaryLiteralKeyValuePair = false

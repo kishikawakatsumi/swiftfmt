@@ -406,6 +406,101 @@ class SpaceTests : XCTestCase {
         XCTAssertEqual(result, expected)
     }
 
+    func testFormatColonsInGenerincParameters1() {
+        let source = """
+            func bar<T, E: P>(name: String, len: Int) {
+
+            }
+            """
+
+        let expected = """
+            func bar<T, E: P>(name : String, len : Int) {
+
+            }
+
+            """
+
+        let runner = TestRunner()
+        var configuration = Configuration()
+        configuration.spaces.around.colons.beforeTypeAnnotations = true
+
+        let result = runner.run(source: source, configuration: configuration)
+        XCTAssertEqual(result, expected)
+    }
+
+    func testFormatColonsInGenerincParameters2() {
+        let source = """
+            func bar<T, E: P>(name: String, len: Int) {
+
+            }
+            """
+
+        let expected = """
+            func bar<T, E : P>(name: String, len: Int) {
+
+            }
+
+            """
+
+        let runner = TestRunner()
+        var configuration = Configuration()
+        configuration.spaces.around.colons.beforeTypeInheritanceClausesInTypeArguments = true
+
+        let result = runner.run(source: source, configuration: configuration)
+        XCTAssertEqual(result, expected)
+    }
+
+    func testFormatCommasInGenerincParameters() {
+        let source = """
+            func allItemsMatch<C1: Container,C2: Container>
+            (_ someContainer: C1,_ anotherContainer: C2) -> Bool
+            where C1.Item == C2.Item,C1.Item: Equatable {
+                // Check that both containers contain the same number of items.
+                if someContainer.count != anotherContainer.count {
+                    return false
+                }
+
+                // Check each pair of items to see if they're equivalent.
+                for i in 0..<someContainer.count {
+                    if someContainer[i] != anotherContainer[i] {
+                        return false
+                    }
+                }
+
+                // All items match, so return true.
+                return true
+            }
+            """
+
+        let expected = """
+            func allItemsMatch<C1: Container, C2: Container>
+            (_ someContainer: C1, _ anotherContainer: C2) -> Bool
+            where C1.Item == C2.Item, C1.Item: Equatable {
+                // Check that both containers contain the same number of items.
+                if someContainer.count != anotherContainer.count {
+                    return false
+                }
+
+                // Check each pair of items to see if they're equivalent.
+                for i in 0..<someContainer.count {
+                    if someContainer[i] != anotherContainer[i] {
+                        return false
+                    }
+                }
+
+                // All items match, so return true.
+                return true
+            }
+
+            """
+
+        let runner = TestRunner()
+        let configuration = Configuration()
+
+        let result = runner.run(source: source, configuration: configuration)
+        XCTAssertEqual(result, expected)
+    }
+
     func testFormatSemicolons() {
         let source = """
             public class Foo{
@@ -664,7 +759,7 @@ class SpaceTests : XCTestCase {
         XCTAssertEqual(result, expected)
     }
 
-    func testSpacesWithinBrackets() {
+    func testSpacesWithinBrackets1() {
         let source = """
             public class Foo{
                 func foo() {
@@ -707,6 +802,212 @@ class SpaceTests : XCTestCase {
         XCTAssertEqual(result, expected)
     }
 
+    func testSpacesWithinBrackets2() {
+        let source = """
+            func foo(_ x: Int, _ y: Int = 7, text: String) {
+                if (0 < x && x <= 10) {
+                    while (x != y) {
+                        x = f(x * 3 + 5)
+                    }
+                } else {
+                    return
+                }
+
+                var ext = x
+                var len = y
+                repeat {
+                    text[ext++] = "$"
+                } while (ext < len)
+
+                len = len > 10000 ? len : 0
+            }
+            """
+
+        let expected = """
+            func foo(_ x: Int, _ y: Int = 7, text: String) {
+                if (0 < x && x <= 10) {
+                    while (x != y) {
+                        x = f(x * 3 + 5)
+                    }
+                } else {
+                    return
+                }
+
+                var ext = x
+                var len = y
+                repeat {
+                    text[ ext++ ] = "$"
+                } while (ext < len)
+
+                len = len > 10000 ? len : 0
+            }
+
+            """
+
+        let runner = TestRunner()
+        var configuration = Configuration()
+        configuration.spaces.within.brackets = true
+
+        let result = runner.run(source: source, configuration: configuration)
+        XCTAssertEqual(result, expected)
+    }
+
+    func testSpacesWithinBrackets3() {
+        let source = """
+            func foo(_ x: Int, _ y: Int = 7, text: String) {
+                if (0 < x && x <= 10) {
+                    while (x != y) {
+                        x = f( x * 3 + 5 )
+                    }
+                } else {
+                    return
+                }
+
+                var ext = x
+                var len = y
+                repeat {
+                    text[ ext++ ] = "$"
+                } while (ext < len)
+
+                len = len > 10000 ? len : 0
+            }
+            """
+
+        let expected = """
+            func foo(_ x: Int, _ y: Int = 7, text: String) {
+                if (0 < x && x <= 10) {
+                    while (x != y) {
+                        x = f(x * 3 + 5)
+                    }
+                } else {
+                    return
+                }
+
+                var ext = x
+                var len = y
+                repeat {
+                    text[ ext++ ] = "$"
+                } while (ext < len)
+
+                len = len > 10000 ? len : 0
+            }
+
+            """
+
+        let runner = TestRunner()
+        var configuration = Configuration()
+        configuration.spaces.within.brackets = true
+
+        let result = runner.run(source: source, configuration: configuration)
+        XCTAssertEqual(result, expected)
+    }
+
+    func testSpacesWithinBrackets4() {
+        let source = """
+            func foo(_ x: Int, _ y: Int = 7, text: String) {
+                if (0 < x && x <= 10) {
+                    while (x != y) {
+                        x = f( x * 3 + 5 )
+                    }
+                } else {
+                    return
+                }
+
+                var ext = x
+                var len = y
+                repeat {
+                    text[ ext++ ] = "$"
+                } while (ext < len)
+
+                len = len > 10000 ? len : 0
+            }
+            """
+
+        let expected = """
+            func foo(_ x: Int, _ y: Int = 7, text: String) {
+                if (0 < x && x <= 10) {
+                    while (x != y) {
+                        x = f(x * 3 + 5)
+                    }
+                } else {
+                    return
+                }
+
+                var ext = x
+                var len = y
+                repeat {
+                    text[ext++] = "$"
+                } while (ext < len)
+
+                len = len > 10000 ? len : 0
+            }
+
+            """
+
+        let runner = TestRunner()
+        var configuration = Configuration()
+        configuration.spaces.within.brackets = false
+
+        let result = runner.run(source: source, configuration: configuration)
+        XCTAssertEqual(result, expected)
+    }
+
+    func testSpacesWithinGroupingParentheses() {
+        let source = """
+            func foo(_ x: Int, _ y: Int = 7, text: String) {
+                if (0 < x && x <= 10) {
+                    while (x != y) {
+                        x = f( x * 3 + 5 )
+                    }
+                } else {
+                    return
+                }
+
+                var ext = x
+                var len = y
+                for i in 0..<x {
+                    y += (y ^ 0x123) << 2
+                }
+                repeat {
+                    text[ ext++ ] = "$"
+                } while (ext < len)
+
+                len = len > 10000 ? len : 0
+            }
+            """
+
+        let expected = """
+            func foo(_ x: Int, _ y: Int = 7, text: String) {
+                if (0 < x && x <= 10) {
+                    while (x != y) {
+                        x = f(x * 3 + 5)
+                    }
+                } else {
+                    return
+                }
+
+                var ext = x
+                var len = y
+                for i in 0..<x {
+                    y += ( y ^ 0x123 ) << 2
+                }
+                repeat {
+                    text[ext++] = "$"
+                } while (ext < len)
+
+                len = len > 10000 ? len : 0
+            }
+
+            """
+
+        let runner = TestRunner()
+        var configuration = Configuration()
+        configuration.spaces.within.groupingParentheses = true
+
+        let result = runner.run(source: source, configuration: configuration)
+        XCTAssertEqual(result, expected)
+    }
+
     func testSpacesWithinFunctionParentheses() {
         let source = """
             public class Foo{
@@ -743,7 +1044,7 @@ class SpaceTests : XCTestCase {
         XCTAssertEqual(result, expected)
     }
 
-    func testSpacesWithinEmptyFunctionParentheses() {
+    func testSpacesWithinEmptyFunctionParentheses1() {
         let source = """
             public class Foo{
                 func foo(){
@@ -775,6 +1076,58 @@ class SpaceTests : XCTestCase {
         configuration.spaces.within.functionDeclarationParentheses = true
         configuration.spaces.within.functionCallParentheses = true
         configuration.spaces.within.emptyFunctionDeclarationParentheses = true
+        configuration.spaces.within.emptyFunctionCallParentheses = true
+
+        let result = runner.run(source: source, configuration: configuration)
+        XCTAssertEqual(result, expected)
+    }
+
+    func testSpacesWithinEmptyFunctionParentheses2() {
+        let source = """
+            func sayHelloWorld() -> String {
+                return "hello, world"
+            }
+            print(sayHelloWorld())
+            """
+
+        let expected = """
+            func sayHelloWorld( ) -> String {
+                return "hello, world"
+            }
+            print(sayHelloWorld())
+
+            """
+
+        let runner = TestRunner()
+
+        var configuration = Configuration()
+        configuration.spaces.within.emptyFunctionDeclarationParentheses = true
+        configuration.spaces.within.emptyFunctionCallParentheses = false
+
+        let result = runner.run(source: source, configuration: configuration)
+        XCTAssertEqual(result, expected)
+    }
+
+    func testSpacesWithinEmptyFunctionParentheses3() {
+        let source = """
+            func sayHelloWorld() -> String {
+                return "hello, world"
+            }
+            print(sayHelloWorld())
+            """
+
+        let expected = """
+            func sayHelloWorld() -> String {
+                return "hello, world"
+            }
+            print(sayHelloWorld( ))
+
+            """
+
+        let runner = TestRunner()
+
+        var configuration = Configuration()
+        configuration.spaces.within.emptyFunctionDeclarationParentheses = false
         configuration.spaces.within.emptyFunctionCallParentheses = true
 
         let result = runner.run(source: source, configuration: configuration)
