@@ -112,9 +112,6 @@
     "ifStatement" : {
       "elseOnNewLine" : false
     },
-    "ifStatement" : {
-      "elseOnNewLine" : false
-    },
     "guardStatement" : {
       "elseOnNewLine" : false
     },
