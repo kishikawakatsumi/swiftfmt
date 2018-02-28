@@ -10,11 +10,7 @@ import Basic
 import SwiftSyntax
 
 public struct Processor {
-    private let options: [String]
-
-    public init(options: [String] = []) {
-        self.options = options
-    }
+    public init() {}
 
     public func processFile(input fileURL: URL, configuration: Configuration, verbose: Bool = false) throws -> String {
         let tokens = try tokenize(fileURL: fileURL, configuration: configuration)

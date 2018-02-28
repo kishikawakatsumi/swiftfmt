@@ -8,12 +8,14 @@
 import Foundation
 
 public struct Configuration : Codable {
-    public static func load(file: URL = URL(fileURLWithPath: ".swiftfmt.json")) -> Configuration {
+    public init() {}
+
+    public static func load(file: URL) -> Configuration? {
         let decoder = JSONDecoder()
         if let data = try? Data(contentsOf: file), let configuration = try? decoder.decode(Configuration.self, from: data) {
             return configuration
         }
-        return Configuration()
+        return nil
     }
 
     // FIXME: Not implemented

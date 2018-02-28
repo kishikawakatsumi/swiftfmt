@@ -17,9 +17,8 @@ struct FormatTool {
         self.verbose = verbose
     }
 
-    func run(source: URL, options: [String]) throws {
-        let processor = Processor(options: options)
-        let configuration = Configuration.load(file: URL(fileURLWithPath: ".swiftfmt.json"))
+    func run(source: URL, configuration: Configuration) throws {
+        let processor = Processor()
 
         let path = AbsolutePath(source.absoluteURL.path)
         if fileSystem.isFile(path) {

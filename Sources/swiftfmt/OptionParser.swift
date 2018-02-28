@@ -18,6 +18,7 @@ struct OptionParser {
 
         let binder = ArgumentBinder<Options>()
         binder.bind(positional: parser.add(positional: "filename", kind: String.self)) { $0.filename = $1 }
+        binder.bind(option: parser.add(option: "--configuration", kind: String.self)) { $0.configurationFile = $1 }
         binder.bind(option: parser.add(option: "--version", kind: Bool.self)) { $0.shouldPrintVersion = $1 }
         binder.bind(option: parser.add(option: "--verbose", kind: Bool.self, usage: "Show more debugging information")) { $0.verbose = $1 }
 
@@ -38,6 +39,7 @@ struct OptionParser {
 }
 
 struct Options {
+    var configurationFile = ""
     var filename = ""
     var verbose = false
     var shouldPrintVersion: Bool = false
