@@ -3,6 +3,10 @@
 
 A tool for formatting Swift code according to style guidelines.
 
+### Live Demo
+
+https://swiftfmt.kishikawakatsumi.com/
+
 ### A Work In Progress
 swiftfmt is still in active development.
 
